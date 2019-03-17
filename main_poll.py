@@ -31,15 +31,11 @@ with open(file_path) as csvfile:
 
     #loop throught the list of all votes by candidate name and store total votes per unique name in the empty list
     #the order of this list should match the order of the unique candidates list because they were both generated in the same way
-    for x in all_candidates:
-        if x == unique_candidates[0]:
-            total_vote_list[0] = (int(total_vote_list[0]) + 1)
-        elif x == unique_candidates[1]:
-            total_vote_list[1] = (int(total_vote_list[1]) + 1) 
-        elif x == unique_candidates[2]:
-            total_vote_list[2] = (int(total_vote_list[2]) + 1) 
-        elif x == unique_candidates[3]:
-            total_vote_list[3] = (int(total_vote_list[3]) + 1)
+    
+    for i in range(len(total_vote_list)):
+	    for name in all_candidates:
+		    if name == unique_candidates[i]:
+			    total_vote_list[i] += 1          
 
     #calculate the percentages of total votes for each candidates and store them in a list
     candidate_percentages = [(votes / votecounter * 100) for votes in total_vote_list]
